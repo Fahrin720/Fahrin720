@@ -1,22 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-label="Profile cover for Fahrin">
-<defs><clipPath id="profileClip"><rect width="1000" height="440" rx="2"/></clipPath><linearGradient id="profileFade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#151C23" stop-opacity=".84"/><stop offset="1" stop-color="#0B1117" stop-opacity="0"/></linearGradient></defs>
-<g clip-path="url(#profileClip)"><rect width="1000" height="440" fill="#0B1117"/><rect width="1000" height="3" fill="#F0616F"/>
-<g opacity=".55" stroke="#303B43" stroke-width="1"><path d="M0 110H1000M0 345H1000"/><path d="M764 0V345"/></g>
-<rect x="764" y="3" width="236" height="342" fill="url(#profileFade)"/>
-<g transform="translate(858 210)" fill="none" stroke="#303B43"><circle r="148"/><circle r="117"/><circle r="86"/><circle r="52"/><path d="M-166 0H166M0 -166V166"/></g>
-<g transform="translate(858 210)" fill="none" stroke="#F0616F" stroke-width="2.5"><path d="M-95 -68A117 117 0 0 1 93 71"/><path d="M15 -148A148 148 0 0 1 136 -60"/></g>
-<circle cx="858" cy="210" r="15" fill="#F0616F"/><circle cx="858" cy="210" r="7" fill="#0B1117"/>
-<path d="M780 68h25m-12.5-12.5v25M950 326h25m-12.5-12.5v25" stroke="#E7A58D" stroke-width="1"/>
-<text x="58" y="70" fill="#F0616F" font-size="13" letter-spacing="2.5" font-family="Consolas,monospace">F720 / PROFILE INDEX</text>
-<text x="738" y="70" text-anchor="end" fill="#A5ADB4" font-size="11" letter-spacing="1.4" font-family="Consolas,monospace">FAHRIN720</text>
-<circle cx="915" cy="76" r="4" fill="#F0616F"><animate attributeName="opacity" values="1;.35;1" dur="3.6s" repeatCount="indefinite"/></circle><text x="933" y="80" fill="#A5ADB4" font-size="10" font-family="Consolas,monospace">PROFILE</text>
-<text x="56" y="163" fill="#F4F1E9" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" letter-spacing="-3.5">Fahrin<tspan fill="#F0616F">.</tspan></text>
-<text x="58" y="226" fill="#F4F1E9" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="600" letter-spacing="-0.7">Building useful software. Learning how to</text>
-<text x="58" y="263" fill="#F4F1E9" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="600" letter-spacing="-0.7">secure it.</text>
-<text x="59" y="326" fill="#A5ADB4" font-size="13" letter-spacing=".35" font-family="Arial,Helvetica,sans-serif">Software Engineering Undergraduate · Security Learner</text>
-<text x="60" y="377" fill="#A5ADB4" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">01<tspan fill="#E7A58D" dx="12">/</tspan><tspan fill="#F4F1E9" dx="12">Software Engineering</tspan></text>
-<text x="320" y="377" fill="#A5ADB4" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">02<tspan fill="#E7A58D" dx="12">/</tspan><tspan fill="#F4F1E9" dx="12">Web Development</tspan></text>
-<text x="580" y="377" fill="#A5ADB4" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">03<tspan fill="#E7A58D" dx="12">/</tspan><tspan fill="#F4F1E9" dx="12">Cybersecurity</tspan></text>
-<text x="58" y="411" fill="#A5ADB4" font-family="Consolas,monospace" font-size="11" letter-spacing="1.1">UNIVERSITI MALAYSIA SABAH · MALAYSIA</text>
-<text x="945" y="411" text-anchor="end" fill="#F0616F" font-family="Consolas,monospace" font-size="11" letter-spacing="1.4">BUILD / LEARN / REPEAT ↗</text>
-</g></svg>
+ <defs><clipPath id="clip"><rect width="1000" height="440" rx="2"/></clipPath><linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F7F3EB" stop-opacity=".84"/><stop offset="1" stop-color="#E9E4D8" stop-opacity="0"/></linearGradient></defs>
+ <g clip-path="url(#clip)"><rect width="1000" height="440" fill="#E9E4D8"/><rect x="0" y="0" width="1000" height="3" fill="#B74846"/>
+ <g opacity=".55" stroke="#BFC3BD" stroke-width="1"><path d="M0 110H1000M0 345H1000"/><path d="M764 0V345"/></g>
+ <rect x="764" y="3" width="236" height="342" fill="url(#fade)"/>
+ <g transform="translate(858 210)" fill="none" stroke="#BFC3BD"><circle r="148"/><circle r="117"/><circle r="86"/><circle r="52"/><path d="M-166 0H166M0 -166V166"/></g>
+ <g transform="translate(858 210)" fill="none" stroke="#B74846" stroke-width="2.5"><path d="M-95 -68A117 117 0 0 1 93 71"/><path d="M15 -148A148 148 0 0 1 136 -60"/></g>
+ <circle cx="858" cy="210" r="15" fill="#B74846"/><circle cx="858" cy="210" r="7" fill="#E9E4D8"/>
+ <path d="M780 68h25m-12.5-12.5v25M950 326h25m-12.5-12.5v25" stroke="#A17869" stroke-width="1"/>
+ <text x="58" y="70" fill="#B74846" font-size="13" letter-spacing="2.5" font-family="Consolas,monospace">F720 / PROFILE INDEX</text>
+ <text x="738" y="70" text-anchor="end" fill="#626D70" font-size="11" letter-spacing="1.4" font-family="Consolas,monospace">FAHRIN720</text>
+ <circle cx="915" cy="76" r="4" fill="#B74846"><animate attributeName="opacity" values="1;.35;1" dur="3.6s" repeatCount="indefinite" /></circle><text x="933" y="80" fill="#626D70" font-size="10" font-family="Consolas,monospace">LIVE</text>
+ <text x="56" y="163" fill="#242B2E" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" letter-spacing="-3.5">Fahrin<tspan fill="#B74846">.</tspan></text>
+ <text x="58" y="226" fill="#242B2E" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="600" letter-spacing="-0.7">Building useful software. Learning how to</text><text x="58" y="263" fill="#242B2E" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="600" letter-spacing="-0.7">secure it.</text>
+ <text x="59" y="326" fill="#626D70" font-size="13" letter-spacing=".35" font-family="Arial,Helvetica,sans-serif">Software Engineering Undergraduate · Cyber Security Learner</text>
+ <text x="60" y="377" fill="#626D70" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">01<tspan fill="#A17869" dx="12">/</tspan><tspan fill="#242B2E" dx="12">Software Engineering</tspan></text><text x="320" y="377" fill="#626D70" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">02<tspan fill="#A17869" dx="12">/</tspan><tspan fill="#242B2E" dx="12">Cybersecurity</tspan></text><text x="580" y="377" fill="#626D70" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">03<tspan fill="#A17869" dx="12">/</tspan><tspan fill="#242B2E" dx="12">Systems &amp; Architecture</tspan></text>
+ <text x="58" y="411" fill="#626D70" font-family="Consolas,monospace" font-size="11" letter-spacing="1.1">UNIVERSITI MALAYSIA SABAH · MALAYSIA</text>
+ <text x="945" y="411" text-anchor="end" fill="#B74846" font-family="Consolas,monospace" font-size="11" letter-spacing="1.4">BUILD / LEARN / REPEAT ↗</text>
+ </g></svg>

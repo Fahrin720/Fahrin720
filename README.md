@@ -1,46 +1,40 @@
 <div align="center">
 
-<img src="./assets/cover.svg" alt="Fahrin — Software Engineering and Cybersecurity profile cover" width="100%" />
+<img src="./assets/cover.svg" width="100%" alt="Profile cover for Fahrin" />
 
-<a href="https://github.com/Fahrin720">GitHub</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/zvx_fahrin/">Instagram</a>
+[GitHub](https://github.com/Fahrin720) &nbsp; / &nbsp; [LinkedIn](https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer)
 
 </div>
 
 ## 01 / About
 
-I'm a **Software Engineering undergraduate at Universiti Malaysia Sabah**, building software, exploring security, and learning how strong engineering and thoughtful design work together.
-
-I like getting hands-on experience: experimenting with ideas, shipping prototypes, testing them, and understanding the code behind them—including when I use AI as a development tool.
-
-My long-term goal is to become a capable engineer through practical experience and constant learning.
+I build web applications, explore practical cybersecurity, and enjoy learning how thoughtful design meets reliable engineering. Currently studying Software Engineering at Universiti Malaysia Sabah.
 
 **Currently exploring**  
-`Full-stack development` · `Web application security` · `System design` · `Product design`
+`Software Engineering` · `Cybersecurity` · `Systems & Architecture`
 
 ## 02 / Selected work
 
 ### 01 / [ProjectLinkUMS](https://github.com/Fahrin720/ProjectLinkUMS)
+Ai Studio Integrated ProjectLink UMS  
+TypeScript · 0 stars
 
-A student-focused project designed to help university students discover projects and connect with potential collaborators based on interests and skills.
+### 02 / [owasp-webapp-pentest-lab](https://github.com/Fahrin720/owasp-webapp-pentest-lab)
+Explore the repository and source code.  
+Python · 0 stars
 
-**Areas:** Full-stack applications · Student collaboration · Matching workflows  
-[Explore the repository](https://github.com/Fahrin720/ProjectLinkUMS)
+### 03 / [soc-threat-hunting-portfolio](https://github.com/Fahrin720/soc-threat-hunting-portfolio)
+Explore the repository and source code.  
+Python · 0 stars
 
-### 02 / [KMLife — CodeNovaX1](https://github.com/Fahrin720/CodeNovaX1)
-
-A college-focused marketplace concept where students can find, post, and coordinate tasks and services within their community.
-
-**Areas:** Web applications · User flows · Community platforms  
-[Explore the repository](https://github.com/Fahrin720/CodeNovaX1)
+### 04 / [CodeNovaX1](https://github.com/Fahrin720/CodeNovaX1)
+The latest version of KMLife  
+TypeScript · 0 stars
 
 ## 03 / Tools & technologies
 
-**Building with**  
-`JavaScript` · `TypeScript` · `Next.js` · `React` · `Supabase` · `PostgreSQL`
-
-**Learning and exploring**  
-`C / C++` · `Python` · `Linux` · `Cybersecurity` · `Git & GitHub`
+`TypeScript` · `JavaScript` · `Python` · `C / C++` · `Next.js` · `Supabase` · `PostgreSQL` · `Git & GitHub` · `React` · `Wireshark` · `Linux` · `HTML / CSS` · `Node.js`
 
 ---
 
-<sub>Building, testing, learning, repeating. · <a href="https://github.com/Fahrin720?tab=repositories">Browse all repositories</a></sub>
+<sub>Always building, always learning. See more at [github.com/Fahrin720](https://github.com/Fahrin720).</sub>

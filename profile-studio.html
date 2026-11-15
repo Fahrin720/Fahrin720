@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>F720 — GitHub Profile Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#090b0e;--panel:#111419;--panel2:#15191f;--input:#0c0f13;--ink:#f3f1ea;--sub:#a0a5ac;--faint:#6f777f;--line:#2b3036;--accent:#ed5362;--mint:#b3d9c5;--radius:8px;--mono:'DM Mono',Consolas,monospace;--sans:'Manrope',Arial,sans-serif}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:13px;min-height:100vh}
+    button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.42}
+    ::selection{background:#ed536244;color:#fff}
+    .app{min-height:100vh;display:grid;grid-template-columns:304px minmax(0,1fr)}
+    .sidebar{background:#0e1115;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto}
+    .brand{display:flex;align-items:center;gap:13px;padding:26px 25px 26px;border-bottom:1px solid var(--line)}
+    .brand-symbol{width:40px;height:40px;background:var(--accent);display:grid;place-items:center;color:#180f12;font-weight:900;font-size:17px;letter-spacing:-3px;transform:skew(-7deg)}
+    .brand-title{font-size:14px;font-weight:800;letter-spacing:-.6px}.brand-sub{font:10px var(--mono);color:var(--faint);margin-top:5px;letter-spacing:1.1px}
+    .side-label{font:10px var(--mono);letter-spacing:1.7px;color:var(--faint);text-transform:uppercase;margin:28px 25px 10px}
+    .nav{display:grid;gap:2px;padding:0 12px}.nav button{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:none;background:transparent;color:#939ca4;padding:13px;border-radius:5px;font-weight:600;transition:.18s}.nav button:hover{background:#181d23;color:#fff}.nav button.active{background:#202328;color:var(--ink)}
+    .nav button.active .nav-number{color:var(--accent)}.nav-number{font:10px var(--mono);color:#6a747c}.nav small{margin-left:auto;color:var(--faint);font:10px var(--mono)}
+    .side-spacer{flex:1}.side-bottom{padding:20px 25px 25px;border-top:1px solid var(--line);font:11px/1.75 var(--mono);color:var(--faint)}.side-bottom a{color:#bcc5cd;text-decoration:none}
+    .workspace{min-width:0;max-width:1800px;width:100%;margin:0 auto}
+    .topbar{height:81px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 42px;border-bottom:1px solid var(--line)}
+    .breadcrumb{font:11px var(--mono);color:var(--faint)}.breadcrumb strong{color:#d0d6d9;font-weight:500}.breadcrumb span{padding:0 11px;color:#3f4850}
+    .top-actions{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+    .sync-state{display:flex;align-items:center;gap:8px;font:10px var(--mono);color:var(--sub);white-space:nowrap}.state-dot{width:7px;height:7px;border-radius:50%;background:#7b8490}.state-dot.ok{background:#7ec4a0}.state-dot.error{background:var(--accent)}
+    .button{border:1px solid var(--line);background:#181c21;color:var(--ink);padding:10px 14px;border-radius:5px;display:inline-flex;align-items:center;gap:9px;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.05px;transition:.15s;white-space:nowrap}.button:hover:not(:disabled){border-color:#747b81;background:#22282f}.button.primary{color:#17100f;background:var(--accent);border-color:var(--accent)}.button.primary:hover{filter:brightness(1.12)}.button.ghost{background:transparent}.button.small{padding:8px 10px;font-size:10px}
+    .main-content{padding:35px 42px 70px}.intro{display:flex;justify-content:space-between;gap:22px;align-items:flex-end;margin-bottom:31px}.eyebrow{font:10px var(--mono);letter-spacing:1.9px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}.intro h1{font-size:clamp(30px,3.3vw,49px);line-height:1.1;letter-spacing:-2.5px;margin:0;font-weight:800}.intro p{margin:13px 0 0;color:var(--sub);max-width:620px;line-height:1.8;font-size:12px}.intro-index{font:10px var(--mono);color:var(--faint);text-align:right;line-height:2.1}
+    .layout{display:grid;grid-template-columns:minmax(290px,370px) minmax(0,1fr);gap:26px;align-items:start}.editor{background:var(--panel);border:1px solid var(--line)}.editor-heading{padding:19px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.editor-heading span:first-child{font-weight:800;font-size:12px}.editor-heading span:last-child{font:10px var(--mono);color:var(--faint)}
+    .editor-content{padding:22px 20px 24px}.editor-section{display:none}.editor-section.active{display:block}.desc{margin:0 0 23px;color:var(--sub);font-size:11px;line-height:1.85}.field{margin-bottom:20px}.field:last-child{margin-bottom:0}.field label{display:block;font:10px var(--mono);color:#c5cace;margin-bottom:9px;letter-spacing:.2px}.field input,.field textarea{outline:0;border:1px solid #343b43;background:var(--input);border-radius:4px;width:100%;padding:11px 12px;color:#eceff0;font-size:12px;transition:border-color .15s;resize:vertical}.field input:focus,.field textarea:focus{border-color:var(--accent)}.field textarea{min-height:90px;line-height:1.7}.field .hint{font:10px/1.6 var(--mono);color:var(--faint);margin-top:7px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.divider{height:1px;background:var(--line);margin:24px 0}.subheading{font:10px var(--mono);text-transform:uppercase;letter-spacing:1.3px;color:var(--faint);margin-bottom:15px}
+    .tool-list{display:flex;flex-wrap:wrap;gap:8px}.tool{border:1px solid #333b43;color:#95a2ad;background:#0d1115;padding:8px 10px;border-radius:3px;font:10px var(--mono);transition:.15s}.tool.selected{border-color:#aa4550;background:#351d24;color:#ffbec5}.tool:focus-visible{outline:2px solid var(--accent)}
+    .option{padding:14px;border:1px solid var(--line);background:#0d1115;margin-bottom:9px;display:flex;gap:12px;align-items:flex-start}.option input{accent-color:var(--accent);margin-top:3px}.option label{flex:1;min-width:0;cursor:pointer}.option b{display:block;color:#e5e9ec;font-size:11px;overflow-wrap:anywhere}.option em{display:block;color:var(--faint);font-style:normal;font:10px/1.7 var(--mono);margin-top:5px}.empty{padding:20px;background:#12171d;border:1px dashed #3f454d;color:#919ca4;font:11px/1.8 var(--mono)}
+    .themes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.theme-item{border:1px solid #363e47;padding:13px;background:#0c0f13;color:#d8dce0;text-align:left;border-radius:4px}.theme-item.selected{outline:1px solid var(--accent);border-color:var(--accent)}.theme-swatch{height:34px;border-radius:2px;margin-bottom:12px;position:relative;overflow:hidden}.theme-swatch:before{content:'';position:absolute;width:30px;height:30px;border:6px solid currentColor;border-radius:50%;right:12px;top:6px;opacity:.6}.theme-name{font-weight:800;font-size:11px}.theme-desc{color:var(--faint);font:10px var(--mono);margin-top:4px}
+    .note{padding:14px;border-left:2px solid var(--accent);background:#211a1d;font:10px/1.8 var(--mono);color:#c9afb4;margin-top:18px}
+    .preview{min-width:0}.preview-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px}.section-title{font:10px var(--mono);letter-spacing:1.5px;color:#d9dfe3;text-transform:uppercase}.preview-tabs{display:flex;gap:3px;border:1px solid var(--line);padding:3px;background:#0e1216}.preview-tabs button{font:10px var(--mono);color:var(--faint);border:0;background:transparent;padding:8px 12px}.preview-tabs button.active{color:#fcfcfc;background:#292f35}
+    .preview-shell{background:#15191e;border:1px solid #313841;min-height:340px;padding:17px;overflow:hidden}.canvas{display:flex;align-items:center;justify-content:center;background:#0b0f13;border:1px solid #292e35;min-height:300px;overflow:auto}.canvas svg{display:block;width:100%;height:auto;max-width:1000px}
+    .readme-preview{display:none;background:#0d1117;color:#e6edf3;padding:30px;min-height:300px;font:14px/1.75 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow:hidden}.readme-preview h2{margin:24px 0 12px;font-size:21px;letter-spacing:-.5px;border-bottom:1px solid #30363d;padding-bottom:9px}.readme-preview h3{font-size:15px}.readme-preview p{line-height:1.8}.readme-preview a{color:#75b9fa;text-decoration:none}.readme-preview .hero-box{max-width:100%;margin:0 auto}.readme-preview .hero-box svg{width:100%;height:auto}.readme-preview .readme-linkbar{text-align:center;color:#a9b6c5;font-size:12px;padding:18px 0}.readme-preview ul{padding-left:20px}.readme-preview li{margin-bottom:10px}.readme-preview code{font:12px var(--mono);background:#1c232b;padding:3px 6px;border-radius:3px}
+    .code-preview{display:none;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;margin:0;background:#0b0f13;color:#a9d6ce;padding:23px;font:11px/1.85 var(--mono);max-height:570px;min-height:300px}
+    .preview-shell[data-mode="readme"] .canvas,.preview-shell[data-mode="source"] .canvas{display:none}.preview-shell[data-mode="readme"] .readme-preview{display:block}.preview-shell[data-mode="source"] .code-preview{display:block}
+    .preview-caption{display:flex;justify-content:space-between;gap:8px;margin:12px 0 28px;font:10px var(--mono);color:var(--faint)}
+    .export{border-top:1px solid var(--line);padding-top:26px}.export-head{display:flex;align-items:center;justify-content:space-between;gap:15px}.export-head h2{margin:0;font-size:19px;font-weight:800;letter-spacing:-.6px}.export-head span{font:10px var(--mono);color:var(--faint)}.export p{color:var(--sub);font-size:11px;line-height:1.9;margin:10px 0 20px}.export-actions{display:flex;gap:9px;flex-wrap:wrap}.steps{display:flex;gap:20px;flex-wrap:wrap;margin-top:25px}.steps span{font:10px var(--mono);color:var(--sub)}.steps b{color:var(--accent);padding-right:8px;font-weight:500}
+    .toast{position:fixed;bottom:24px;right:26px;background:#e6eee8;color:#14231b;padding:12px 16px;border-radius:4px;font:11px var(--mono);box-shadow:0 12px 40px #0007;opacity:0;pointer-events:none;transform:translateY(10px);transition:.22s;z-index:100}.toast.show{opacity:1;transform:translateY(0)}
+    .mobile-menu{display:none}
+    @media(max-width:1150px){.layout{grid-template-columns:minmax(270px,320px) minmax(0,1fr)}.main-content{padding:28px 24px}.topbar{padding:0 24px}.app{grid-template-columns:245px minmax(0,1fr)}.brand{padding-left:17px}.side-label{margin-left:17px}.side-bottom{padding-left:17px}}
+    @media(max-width:850px){.app{display:block}.sidebar{height:auto;min-height:0;position:relative}.brand{padding:14px 20px}.side-label,.side-spacer,.side-bottom{display:none}.nav{display:flex;overflow-x:auto;padding:8px 14px;gap:6px}.nav button{white-space:nowrap;width:auto;padding:10px}.nav small{display:none}.topbar{height:auto;min-height:65px;padding:15px 20px;flex-wrap:wrap}.main-content{padding:25px 20px}.layout{grid-template-columns:1fr}.intro-index{display:none}}
+    @media(max-width:480px){.intro h1{letter-spacing:-1px}.main-content{padding:20px 13px}.topbar{padding:12px 13px}.sync-state{order:3;width:100%}.preview-shell{padding:7px;min-height:180px}.canvas{min-height:130px}.editor-content{padding:18px 15px}.readme-preview{padding:13px}.breadcrumb{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" aria-label="Editor navigation">
+    <div class="brand"><div class="brand-symbol" aria-hidden="true">F/</div><div><div class="brand-title">PROFILE <span style="color:var(--accent)">/</span> STUDIO</div><div class="brand-sub">GITHUB EDITION — 01</div></div></div>
+    <div class="side-label">Workspace</div>
+    <nav class="nav" id="sectionNav" aria-label="Editor sections">
+      <button class="active" data-section="identity"><span class="nav-number">01</span> Identity <small>PROFILE</small></button>
+      <button data-section="focus"><span class="nav-number">02</span> Expertise <small>STACK</small></button>
+      <button data-section="projects"><span class="nav-number">03</span> Projects <small>LIVE</small></button>
+      <button data-section="appearance"><span class="nav-number">04</span> Appearance <small>STYLE</small></button>
+    </nav>
+    <div class="side-spacer"></div><div class="side-bottom">DESIGNED FOR REAL WORK.<br />NO FAKE METRICS. NO NOISE.<br /><a href="https://github.com/Fahrin720" target="_blank" rel="noopener">github.com/Fahrin720 ↗</a></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumb">WORKSPACE <span>/</span> <strong>GITHUB PROFILE</strong> <span>/</span> V2</div>
+      <div class="top-actions">
+        <div class="sync-state" aria-live="polite"><span id="syncDot" class="state-dot"></span><span id="syncLabel">Not synced</span></div>
+        <button class="button" id="syncBtn" type="button">↻ &nbsp;Sync GitHub</button>
+        <button class="button primary" id="downloadBothTop" type="button">Export files ↗</button>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="intro">
+        <div><div class="eyebrow">PERSONAL BRAND / MADE VISIBLE</div><h1>Your work deserves<br />a better introduction<span style="color:var(--accent)">.</span></h1><p>A precise, editorial GitHub profile with your real projects, a custom SVG cover, and a README that says more with less.</p></div>
+        <div class="intro-index">PROFILE SYSTEM<br />F720—002<br />2026 / EDITION</div>
+      </div>
+      <div class="layout">
+        <section class="editor" aria-label="Profile settings">
+          <div class="editor-heading"><span id="editorTitle">01 / The person behind the code</span><span>CONFIGURATION</span></div>
+          <div class="editor-content">
+            <div class="editor-section active" id="panel-identity">
+              <p class="desc">A good profile starts with who you are and what you're learning—not a wall of statistics.</p>
+              <div class="field"><label for="username">GITHUB USERNAME</label><input id="username" maxlength="39" value="Fahrin720" spellcheck="false" /></div>
+              <div class="field"><label for="displayName">DISPLAY NAME</label><input id="displayName" maxlength="48" value="Fahrin" /></div>
+              <div class="field"><label for="headline">HERO STATEMENT</label><textarea id="headline" rows="3" maxlength="132">Building useful software. Learning how to secure it.</textarea><div class="hint">Keep it concise. This is the first line people remember.</div></div>
+              <div class="field"><label for="role">ROLE / DISCIPLINE</label><input id="role" maxlength="75" value="Software Engineering Undergraduate · Security Learner" /></div>
+              <div class="field"><label for="location">AFFILIATION</label><input id="location" maxlength="76" value="Universiti Malaysia Sabah · Malaysia" /></div>
+              <div class="field"><label for="about">ABOUT ME</label><textarea id="about" rows="5" maxlength="600">I build web applications, explore practical cybersecurity, and enjoy learning how thoughtful design meets reliable engineering. Currently studying Software Engineering at Universiti Malaysia Sabah.</textarea></div>
+              <div class="divider"></div>
+              <div class="subheading">Public links</div>
+              <div class="field"><label for="linkedin">LINKEDIN URL (OPTIONAL)</label><input id="linkedin" type="url" spellcheck="false" value="https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer" /></div>
+              <div class="field"><label for="website">WEBSITE URL (OPTIONAL)</label><input id="website" type="url" spellcheck="false" placeholder="https://example.com" /></div>
+            </div>
+            <div class="editor-section" id="panel-focus">
+              <p class="desc">Showcase the tools and disciplines you actually use. A truthful list is more compelling than arbitrary 99% skill meters.</p>
+              <div class="subheading">Focus areas · choose up to four</div>
+              <div class="tool-list" id="focusList"></div>
+              <div class="divider"></div>
+              <div class="subheading">Toolkit · click to add / remove</div>
+              <div class="tool-list" id="toolList"></div>
+              <div class="note">Focus and technology choices are self-reported. GitHub language insights are not used to invent proficiency scores.</div>
+            </div>
+            <div class="editor-section" id="panel-projects">
+              <p class="desc">Select genuine public repositories for your README. The list updates after syncing with GitHub's public API.</p>
+              <div class="field"><label for="repoSort">PROJECT ORDER</label><select id="repoSort" style="width:100%;background:#0c0f13;border:1px solid #343b43;color:#e7e9eb;border-radius:4px;padding:11px 12px"><option value="featured">Selected order</option><option value="updated">Recently updated</option><option value="stars">Most starred</option></select></div>
+              <div class="subheading">Select up to four</div><div id="repoList" class="empty">Sync with GitHub to load public repositories. Nothing is fabricated when the API is unavailable.</div>
+            </div>
+            <div class="editor-section" id="panel-appearance">
+              <p class="desc">Restrained color, generous white space, and an SVG designed to survive GitHub's image rendering restrictions.</p>
+              <div class="subheading">Color system</div><div id="themeList" class="themes"></div>
+              <div class="divider"></div><div class="subheading">Cover motion</div>
+              <div class="option"><input type="checkbox" id="motion" checked /><label for="motion"><b>Subtle signal animation</b><em>One fading indicator. Honors reduced-motion settings. Static design still looks complete.</em></label></div>
+              <div class="note">The exported SVG uses embedded shapes and standard fonts. No external scripts, images or fonts are required inside the GitHub README image.</div>
+            </div>
+          </div>
+        </section>
+        <section class="preview" aria-label="Output preview">
+          <div class="preview-top"><div class="section-title">02 / Live composition</div><div class="preview-tabs" id="previewTabs" role="tablist" aria-label="Preview mode"><button class="active" data-mode="svg" role="tab" aria-selected="true">SVG COVER</button><button data-mode="readme" role="tab" aria-selected="false">README</button><button data-mode="source" role="tab" aria-selected="false">SOURCE</button></div></div>
+          <div class="preview-shell" data-mode="svg" id="previewShell"><div class="canvas" id="svgPreview" aria-label="Live SVG cover"></div><div class="readme-preview" id="readmePreview"></div><pre class="code-preview" id="sourcePreview"></pre></div>
+          <div class="preview-caption"><span>1000 × 440 PX &nbsp;/&nbsp; SELF-CONTAINED SVG</span><span id="previewStatus">EDIT TO PREVIEW · AUTO SAVE</span></div>
+          <div class="export">
+            <div class="export-head"><h2>Ready to publish.</h2><span>03 / EXPORT</span></div>
+            <p>Download the cover and README. Put <code>README.md</code> in your <code>username/username</code> profile repository, and the SVG in its <code>assets/</code> folder.</p>
+            <div class="export-actions"><button class="button primary" id="downloadSvg">↓ Download cover.svg</button><button class="button" id="downloadReadme">↓ Download README.md</button><button class="button ghost" id="copyMd">⧉ Copy Markdown</button></div>
+            <div class="steps"><span><b>01</b> SYNC REAL DATA</span><span><b>02</b> TUNE YOUR PROFILE</span><span><b>03</b> COMMIT BOTH FILES</span></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+const THEMES = {
+  ember:{name:'Ember / Graphite',subtitle:'SIGNAL RED',bg:'#0B1117',surface:'#151C23',ink:'#F4F1E9',muted:'#A5ADB4',line:'#303B43',accent:'#F0616F',detail:'#E7A58D'},
+  glacier:{name:'Glacier / Ink',subtitle:'COOL BLUE',bg:'#0A1520',surface:'#102330',ink:'#EDF7F9',muted:'#98AFBF',line:'#294655',accent:'#6AC5D6',detail:'#B0D8DB'},
+  ultraviolet:{name:'Ultraviolet',subtitle:'DIGITAL LILAC',bg:'#11101B',surface:'#1B1930',ink:'#F2ECFA',muted:'#A9A2BD',line:'#413857',accent:'#BC9AF7',detail:'#F0A7D4'},
+  parchment:{name:'Warm / Archive',subtitle:'SOFT PAPER',bg:'#E9E4D8',surface:'#F7F3EB',ink:'#242B2E',muted:'#626D70',line:'#BFC3BD',accent:'#B74846',detail:'#A17869'}
+};
+const FOCI=['Software Engineering','Web Development','Cybersecurity','UI / UX Design','Systems & Architecture','Open Source','Data Engineering','Automation','Computer Networks','Security Research'];
+const TOOLS=['TypeScript','JavaScript','Python','C / C++','Next.js','React','Node.js','Supabase','PostgreSQL','Git & GitHub','Docker','Linux','Figma','HTML / CSS','Burp Suite','Wireshark'];
+const DEFAULT={username:'Fahrin720',displayName:'Fahrin',headline:'Building useful software. Learning how to secure it.',role:'Software Engineering Undergraduate · Security Learner',location:'Universiti Malaysia Sabah · Malaysia',about:'I build web applications, explore practical cybersecurity, and enjoy learning how thoughtful design meets reliable engineering. Currently studying Software Engineering at Universiti Malaysia Sabah.',linkedin:'https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer',website:'',theme:'ember',motion:true,focus:['Software Engineering','Web Development','Cybersecurity'],tools:['TypeScript','JavaScript','Python','C / C++','Next.js','Supabase','PostgreSQL','Git & GitHub'],featured:[],sort:'featured'};
+const state={...DEFAULT,focus:[...DEFAULT.focus],tools:[...DEFAULT.tools],featured:[],repositories:[],github:null,verified:false,syncError:''};
+try {const saved=JSON.parse(localStorage.getItem('f720-profile-studio-v2')||'null');if(saved&&typeof saved==='object')for(const k of Object.keys(DEFAULT)){if(k in saved&&typeof saved[k]===typeof DEFAULT[k])state[k]=saved[k]}}catch(_e){}
+const $=id=>document.getElementById(id);
+function xml(value){return String(value??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;')}
+function html(value){return xml(value)}
+function md(value){return String(value??'').replace(/[\\`*_{}\[\]<>|]/g,'\\$&').replace(/\n/g,' ')}
+function url(value){try{const parsed=new URL(value);return ['https:','http:'].includes(parsed.protocol)?parsed.href:null}catch(_e){return null}}
+function lineWrap(str,max=38){const words=String(str).replace(/\s+/g,' ').trim().split(' ');const lines=[];let line='';for(const word of words){if((line+' '+word).trim().length>max&&line){lines.push(line);line=word}else line=(line+' '+word).trim()}if(line)lines.push(line);return lines.slice(0,3)}
+function persist(){const out={};Object.keys(DEFAULT).forEach(k=>out[k]=state[k]);try{localStorage.setItem('f720-profile-studio-v2',JSON.stringify(out))}catch(_e){}}
+function notice(text){$('toast').textContent=text;$('toast').classList.add('show');clearTimeout(notice.timer);notice.timer=setTimeout(()=>$('toast').classList.remove('show'),2400)}
+function setStatus(label,level=''){ $('syncLabel').textContent=label;$('syncDot').className='state-dot '+level }
+function drawSvg(){
+ const t=THEMES[state.theme]||THEMES.ember; const name=state.displayName.trim()||state.username.trim()||'Developer';
+ const nameSize=name.length>22?49:name.length>14?61:78;
+ const textLines=lineWrap(state.headline||'Building and learning, one project at a time.',44);
+ const textRows=textLines.map((line,i)=>`<text x="58" y="${226+i*37}" fill="${t.ink}" font-size="27" font-family="Arial,Helvetica,sans-serif" font-weight="600" letter-spacing="-0.7">${xml(line)}</text>`).join('');
+ const focus=state.focus.slice(0,3).map((f,i)=>`<text x="${60+i*260}" y="377" fill="${t.muted}" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing=".5">${xml(String(i+1).padStart(2,'0'))}<tspan fill="${t.detail}" dx="12">/</tspan><tspan fill="${t.ink}" dx="12">${xml(f.length>24?f.slice(0,23)+'…':f)}</tspan></text>`).join('');
+ const motion=state.motion?`<circle cx="915" cy="76" r="4" fill="${t.accent}"><animate attributeName="opacity" values="1;.35;1" dur="3.6s" repeatCount="indefinite" /></circle>`:`<circle cx="915" cy="76" r="4" fill="${t.accent}"/>`;
+ const handle=(state.username||'developer').replace(/[^a-zA-Z0-9-]/g,'').slice(0,39);
+ return `<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="440" viewBox="0 0 1000 440" role="img" aria-label="Profile cover for ${xml(name)}">
+ <defs><clipPath id="clip"><rect width="1000" height="440" rx="2"/></clipPath><linearGradient id="fade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${t.surface}" stop-opacity=".84"/><stop offset="1" stop-color="${t.bg}" stop-opacity="0"/></linearGradient></defs>
+ <g clip-path="url(#clip)"><rect width="1000" height="440" fill="${t.bg}"/><rect x="0" y="0" width="1000" height="3" fill="${t.accent}"/>
+ <g opacity=".55" stroke="${t.line}" stroke-width="1"><path d="M0 110H1000M0 345H1000"/><path d="M764 0V345"/></g>
+ <rect x="764" y="3" width="236" height="342" fill="url(#fade)"/>
+ <g transform="translate(858 210)" fill="none" stroke="${t.line}"><circle r="148"/><circle r="117"/><circle r="86"/><circle r="52"/><path d="M-166 0H166M0 -166V166"/></g>
+ <g transform="translate(858 210)" fill="none" stroke="${t.accent}" stroke-width="2.5"><path d="M-95 -68A117 117 0 0 1 93 71"/><path d="M15 -148A148 148 0 0 1 136 -60"/></g>
+ <circle cx="858" cy="210" r="15" fill="${t.accent}"/><circle cx="858" cy="210" r="7" fill="${t.bg}"/>
+ <path d="M780 68h25m-12.5-12.5v25M950 326h25m-12.5-12.5v25" stroke="${t.detail}" stroke-width="1"/>
+ <text x="58" y="70" fill="${t.accent}" font-size="13" letter-spacing="2.5" font-family="Consolas,monospace">F720 / PROFILE INDEX</text>
+ <text x="738" y="70" text-anchor="end" fill="${t.muted}" font-size="11" letter-spacing="1.4" font-family="Consolas,monospace">${xml(handle.toUpperCase())}</text>
+ ${motion}<text x="933" y="80" fill="${t.muted}" font-size="10" font-family="Consolas,monospace">LIVE</text>
+ <text x="56" y="163" fill="${t.ink}" font-family="Arial,Helvetica,sans-serif" font-size="${nameSize}" font-weight="700" letter-spacing="-3.5">${xml(name)}<tspan fill="${t.accent}">.</tspan></text>
+ ${textRows}
+ <text x="59" y="326" fill="${t.muted}" font-size="13" letter-spacing=".35" font-family="Arial,Helvetica,sans-serif">${xml(state.role.length>86?state.role.slice(0,85)+'…':state.role)}</text>
+ ${focus}
+ <text x="58" y="411" fill="${t.muted}" font-family="Consolas,monospace" font-size="11" letter-spacing="1.1">${xml(state.location.slice(0,68).toUpperCase())}</text>
+ <text x="945" y="411" text-anchor="end" fill="${t.accent}" font-family="Consolas,monospace" font-size="11" letter-spacing="1.4">BUILD / LEARN / REPEAT ↗</text>
+ </g></svg>`;
+}
+function verifiedProjects(){if(!state.verified)return [];const lookup=new Map(state.repositories.map(r=>[r.name,r]));let selected=state.featured.map(n=>lookup.get(n)).filter(Boolean);if(state.sort==='stars')selected.sort((a,b)=>b.stargazers_count-a.stargazers_count);if(state.sort==='updated')selected.sort((a,b)=>new Date(b.pushed_at)-new Date(a.pushed_at));return selected.slice(0,4)}
+function markdown(){
+ const uname=(state.username||'Fahrin720').trim(), profile=`https://github.com/${encodeURIComponent(uname)}`;
+ const social=[`[GitHub](${profile})`];if(url(state.linkedin))social.push(`[LinkedIn](${url(state.linkedin)})`);if(url(state.website))social.push(`[Website](${url(state.website)})`);
+ const f=state.focus.length?state.focus.map(x=>`\`${md(x)}\``).join(' · '):'Currently exploring software engineering and security';
+ const tools=state.tools.length?state.tools.map(x=>`\`${md(x)}\``).join(' · '):'Tools and languages will be added here.';
+ const repos=verifiedProjects();const projects=repos.length?repos.map((r,i)=>`### ${String(i+1).padStart(2,'0')} / [${md(r.name)}](${r.html_url})\n${md(r.description||'Explore the repository and source code.')}  \n${md(r.language||'Code')} · ${r.stargazers_count} stars`).join('\n\n'):'_Selected repositories will appear here after syncing and choosing your projects in the editor._';
+ return `<div align="center">\n\n<img src="./assets/cover.svg" width="100%" alt="Profile cover for ${md(state.displayName)}" />\n\n${social.join(' &nbsp; / &nbsp; ')}\n\n</div>\n\n## 01 / About\n\n${state.about.trim().replace(/\r/g,'')}\n\n**Currently exploring**  \n${f}\n\n## 02 / Selected work\n\n${projects}\n\n## 03 / Tools & technologies\n\n${tools}\n\n---\n\n<sub>Always building, always learning. See more at [github.com/${md(uname)}](${profile}).</sub>\n`;
+}
+function renderReadme(){const social=[`<a href="https://github.com/${encodeURIComponent(state.username)}">GitHub</a>`];if(url(state.linkedin))social.push(`<a href="${html(url(state.linkedin))}">LinkedIn</a>`);if(url(state.website))social.push(`<a href="${html(url(state.website))}">Website</a>`);
+ const projects=verifiedProjects();return `<div class="hero-box">${drawSvg()}</div><div class="readme-linkbar">${social.join(' &nbsp; / &nbsp; ')}</div><h2>01 / About</h2><p>${html(state.about).replace(/\n/g,'<br>')}</p><p><strong>Currently exploring</strong></p><p>${state.focus.map(s=>`<code>${html(s)}</code>`).join(' &nbsp; ')||'Learning new things'}</p><h2>02 / Selected work</h2>${projects.length?projects.map((r,i)=>`<h3>${String(i+1).padStart(2,'0')} / <a href="${html(r.html_url)}">${html(r.name)}</a></h3><p>${html(r.description||'Explore the source code.')}<br><small style="color:#8b949e">${html(r.language||'Code')} · ${r.stargazers_count} stars</small></p>`).join(''):'<p style="color:#8b949e;font-style:italic">Select repositories after a successful GitHub sync to populate this section.</p>'}<h2>03 / Tools & technologies</h2><p>${state.tools.map(s=>`<code>${html(s)}</code>`).join(' &nbsp; ')}</p>`}
+function render(){persist();$('svgPreview').innerHTML=drawSvg();$('readmePreview').innerHTML=renderReadme();$('sourcePreview').textContent=markdown();$('previewStatus').textContent=state.verified?`SYNCED @${state.github.login.toUpperCase()} · ${state.github.public_repos} PUBLIC REPOS`:'LOCAL PREVIEW · LIVE REPOSITORIES NOT LOADED'}
+function renderChoices(){ $('focusList').innerHTML=FOCI.map(name=>`<button type="button" data-value="${html(name)}" class="tool ${state.focus.includes(name)?'selected':''}" aria-pressed="${state.focus.includes(name)}">${html(name)}</button>`).join('');$('toolList').innerHTML=TOOLS.map(name=>`<button type="button" data-value="${html(name)}" class="tool ${state.tools.includes(name)?'selected':''}" aria-pressed="${state.tools.includes(name)}">${html(name)}</button>`).join('');$('themeList').innerHTML=Object.entries(THEMES).map(([id,t])=>`<button type="button" class="theme-item ${state.theme===id?'selected':''}" data-theme="${id}" aria-pressed="${state.theme===id}"><div class="theme-swatch" style="background:${t.bg};color:${t.accent};border:1px solid ${t.line}"></div><div class="theme-name">${t.name}</div><div class="theme-desc">${t.subtitle}</div></button>`).join(''); }
+function renderRepos(){const el=$('repoList');if(!state.verified){el.className='empty';el.textContent=state.syncError?'Could not load repositories: '+state.syncError+'. Your existing profile text is still editable.':'Sync with GitHub to load real repositories. No sample projects or fake metrics.';return}el.className='';const repos=state.repositories.filter(r=>!r.fork&&r.name.toLowerCase()!==state.username.toLowerCase()).sort((a,b)=>{const as=state.featured.includes(a.name)?1:0,bs=state.featured.includes(b.name)?1:0;return bs-as||new Date(b.pushed_at)-new Date(a.pushed_at)});el.innerHTML=repos.length?repos.map(r=>`<div class="option"><input id="repo-${html(r.id)}" type="checkbox" data-repo="${html(r.name)}" ${state.featured.includes(r.name)?'checked':''}/><label for="repo-${html(r.id)}"><b>${html(r.name)}</b><em>${html((r.description||'No description provided').slice(0,115))}<br>${html(r.language||'Code')} · ★ ${r.stargazers_count||0}</em></label></div>`).join(''):'<div class="empty">No public, non-fork repositories found.</div>'}
+async function syncGithub(){const user=(state.username||'').trim();if(!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$/.test(user)){setStatus('Invalid username','error');notice('Enter a valid GitHub username.');return} $('syncBtn').disabled=true;setStatus('Syncing public GitHub data…');state.syncError='';try{
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),13000);
+ try{const uRes=await fetch(`https://api.github.com/users/${encodeURIComponent(user)}`,{signal:controller.signal,headers:{Accept:'application/vnd.github+json'}});if(!uRes.ok)throw Error(uRes.status===404?'User not found':uRes.status===403?'API rate limit exceeded':`GitHub HTTP ${uRes.status}`);const info=await uRes.json();let repos=[];for(let page=1;page<=5;page++){const r=await fetch(`https://api.github.com/users/${encodeURIComponent(user)}/repos?per_page=100&page=${page}&type=owner`,{signal:controller.signal,headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw Error(r.status===403?'API rate limit exceeded':`Repository request failed (${r.status})`);const batch=await r.json();if(!Array.isArray(batch))throw Error('Unexpected API response');repos.push(...batch);if(batch.length<100)break}
+ state.github=info;state.repositories=repos;state.verified=true;state.featured=state.featured.filter(name=>repos.some(r=>r.name===name));if(state.featured.length===0){const priority=['ProjectLinkUMS','CodeNovaX1'];state.featured=[...priority.filter(name=>repos.some(r=>r.name===name)),...repos.filter(r=>!r.fork&&r.name.toLowerCase()!==user.toLowerCase()).sort((a,b)=>new Date(b.pushed_at)-new Date(a.pushed_at)).map(r=>r.name)].filter((n,i,a)=>a.indexOf(n)===i).slice(0,3)}
+ setStatus(`Synced · ${info.public_repos} public repos`,'ok');notice('Public GitHub repositories loaded.');
+ }finally{clearTimeout(timeout)}
+ }catch(e){state.verified=false;state.github=null;state.repositories=[];state.syncError=e?.message||'Connection failed';setStatus(`Sync unavailable · ${state.syncError}`,'error');notice('GitHub sync failed. No fake data will be shown.')}finally{$('syncBtn').disabled=false;renderRepos();render()}}
+function download(filename,body,mime){const blob=new Blob([body],{type:mime});const target=URL.createObjectURL(blob);const a=document.createElement('a');a.href=target;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(target),1200)}
+function downloadCover(){download('cover.svg',drawSvg(),'image/svg+xml;charset=utf-8')}
+function downloadMd(){download('README.md',markdown(),'text/markdown;charset=utf-8')}
+function bind(){document.querySelectorAll('#panel-identity input,#panel-identity textarea').forEach(el=>{el.value=state[el.id]??'';el.addEventListener('input',()=>{state[el.id]=el.value;if(el.id==='username'){state.verified=false;state.repositories=[];state.github=null;state.featured=[];setStatus('Username changed · sync again');renderRepos()}render()})});$('repoSort').value=state.sort;$('repoSort').addEventListener('change',e=>{state.sort=e.target.value;render()});$('motion').checked=state.motion;$('motion').addEventListener('change',e=>{state.motion=e.target.checked;render()});
+ $('sectionNav').addEventListener('click',e=>{const button=e.target.closest('[data-section]');if(!button)return;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b===button));document.querySelectorAll('.editor-section').forEach(p=>p.classList.toggle('active',p.id==='panel-'+button.dataset.section));const labels={identity:'01 / The person behind the code',focus:'02 / What you actually work with',projects:'03 / Your public work',appearance:'04 / Make it distinctly yours'};$('editorTitle').textContent=labels[button.dataset.section]});
+ $('previewTabs').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;document.querySelectorAll('#previewTabs button').forEach(p=>{p.classList.toggle('active',p===b);p.setAttribute('aria-selected',String(p===b))});$('previewShell').dataset.mode=b.dataset.mode});
+ $('focusList').addEventListener('click',e=>{const b=e.target.closest('[data-value]');if(!b)return;const value=b.dataset.value;if(state.focus.includes(value)){state.focus=state.focus.filter(v=>v!==value)}else if(state.focus.length<4)state.focus.push(value);else{notice('Choose a maximum of four focus areas.');return}renderChoices();render()});
+ $('toolList').addEventListener('click',e=>{const b=e.target.closest('[data-value]');if(!b)return;const value=b.dataset.value;state.tools=state.tools.includes(value)?state.tools.filter(v=>v!==value):[...state.tools,value];renderChoices();render()});
+ $('themeList').addEventListener('click',e=>{const b=e.target.closest('[data-theme]');if(!b)return;state.theme=b.dataset.theme;renderChoices();render()});
+ $('repoList').addEventListener('change',e=>{if(!e.target.matches('[data-repo]'))return;const name=e.target.dataset.repo;if(e.target.checked){if(state.featured.length>=4){e.target.checked=false;notice('A maximum of four featured projects.');return}state.featured.push(name)}else state.featured=state.featured.filter(v=>v!==name);renderRepos();render()});
+ $('syncBtn').addEventListener('click',syncGithub);$('downloadSvg').addEventListener('click',downloadCover);$('downloadReadme').addEventListener('click',downloadMd);$('downloadBothTop').addEventListener('click',()=>{downloadCover();setTimeout(downloadMd,300);notice('Exporting SVG and README. Put SVG in assets/.')});$('copyMd').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(markdown());notice('README Markdown copied.')}catch(e){const area=document.createElement('textarea');area.value=markdown();document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();notice('README Markdown copied.')}});
+}
+renderChoices();bind();renderRepos();render();syncGithub();
+</script>
+</body>
+</html>
