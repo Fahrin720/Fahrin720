@@ -1,36 +1,25 @@
-# Set up your GitHub profile README
+# F720 Visual Profile V3
 
-This package was prepared for `github.com/Fahrin720`.
+This version makes the **entire GitHub README** one cohesive SVG image, rather than putting Markdown sections below a hero banner.
 
-## 1. Create or open the profile repository
+## Publish
 
-Visit https://github.com/Fahrin720/Fahrin720. Your profile repository must be public and have the exact same name as your username.
+Upload `README.md` and the `assets/` directory to the root of your `Fahrin720/Fahrin720` GitHub profile repository. The default `README.md` selects `assets/profile-crimson.svg`.
 
-## 2. Add the files
+## Choose a theme
 
-Keep this exact structure at the root of your profile repository:
+In `README.md`, change only the image source:
 
-```
-Fahrin720/
-├── README.md
-└── assets/
-    └── cover.svg
-```
+- `./assets/profile-crimson.svg` — charcoal and coral (default)
+- `./assets/profile-violet.svg` — deep violet
+- `./assets/profile-cobalt.svg` — deep blue
+- `./assets/profile-jade.svg` — deep green
+- `./assets/profile-light.svg` — warm light variant
 
-Replace the existing `README.md` only if you want to replace your current profile content. Upload `cover.svg` to the `assets` directory.
+GitHub does not automatically recolor a static SVG when you select a different theme. The theme choice is made by changing the filename above. The **dark crimson profile is the default in both dark and light GitHub modes** so it does not unexpectedly become white.
 
-## 3. Preview
+## Why the collapsed links section?
 
-Visit https://github.com/Fahrin720. The README displays directly on your profile.
+GitHub displays the SVG using an `<img>` element. Items drawn inside that image are not independently clickable. The collapsible links section keeps GitHub repository and contact links usable and accessible without putting a wall of text under the artwork.
 
-## 4. Customize later
-
-Open `profile-studio.html` in a browser, edit the text/colors, and select the projects you wish to show. Use **Sync GitHub** for live public repository metadata, then download the new cover and README and commit both files again. Changing the editor does not automatically update GitHub.
-
-## Notes
-
-- The SVG is standalone: no external fonts, scripts, external images, or fetches inside the exported image.
-- The editor *optionally* loads Google Fonts for its own interface; it will fall back to system fonts offline.
-- Public GitHub API sync may be limited by your network or GitHub's unauthenticated API rate limit. On failure, the editor shows an error instead of fictional metrics.
-- Featured projects in the included `README.md` were selected from the publicly visible repositories, not created by the app's offline fallback.
-- Minimal SVG animation is optional. Rendering can vary across GitHub's image proxy, so the design remains legible in its static frame.
+The artwork uses no external scripts, fonts, images, or invented skill scores. Its project illustrations are stylized concepts, not screenshots of the products.
