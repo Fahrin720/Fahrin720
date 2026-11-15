@@ -1,9 +1,46 @@
-<p align="center">
-  <img width="100%" src="https://github-stats-card-peach.vercel.app/api/card?username=Fahrin720&card=readme&theme=nord&tagline=Full-stack+developer+%26+open-source+tinkerer&about=-+%F0%9F%94%AD+I%27m+currently+diving+deeper+into+the+core+of+computer+science+with+the+goal+of+becoming+an+expert+by+experience+before+I%27m+25.+Follow+or+look+into+my+journey.+&twitter=&linkedin=www.linkedin.com%2Fin%2Fmohamed-fahrin-bin-mohamed-muneer&instagram=https%3A%2F%2Fwww.instagram.com%2Fzvx_fahrin%2F&website=&animated=true&bg_anim=grid" alt="README profile card" />
-</p>
+<div align="center">
 
-<p align="center">[LinkedIn](https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer) · [Instagram](https://www.instagram.com/zvx_fahrin/)</p>
+<img src="./assets/cover.svg" alt="Fahrin — Software Engineering and Cybersecurity profile cover" width="100%" />
 
-### 📊 GitHub Stats
+<a href="https://github.com/Fahrin720">GitHub</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/mohamed-fahrin-bin-mohamed-muneer">LinkedIn</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/zvx_fahrin/">Instagram</a>
 
-  <img width="100%" src="https://github-stats-card-peach.vercel.app/api/card?username=Fahrin720&card=combined&cards=stats%2Clangs%2Cstreak%2Cactivity&tech=javascript%2Cpython%2Ccplusplus%2Cruby%2Creact%2Cnextdotjs%2Cangular%2Ctailwindcss%2Cnodedotjs%2Cpostgresql%2Csupabase%2Cgit%2Cgooglecloud%2Cvercel%2Cfigma%2Cgithubactions&theme=nord&bg_anim=grid&v=mw66ub9e" alt="GitHub Stats" />
+</div>
+
+## 01 / About
+
+I'm a **Software Engineering undergraduate at Universiti Malaysia Sabah**, building software, exploring security, and learning how strong engineering and thoughtful design work together.
+
+I like getting hands-on experience: experimenting with ideas, shipping prototypes, testing them, and understanding the code behind them—including when I use AI as a development tool.
+
+My long-term goal is to become a capable engineer through practical experience and constant learning.
+
+**Currently exploring**  
+`Full-stack development` · `Web application security` · `System design` · `Product design`
+
+## 02 / Selected work
+
+### 01 / [ProjectLinkUMS](https://github.com/Fahrin720/ProjectLinkUMS)
+
+A student-focused project designed to help university students discover projects and connect with potential collaborators based on interests and skills.
+
+**Areas:** Full-stack applications · Student collaboration · Matching workflows  
+[Explore the repository](https://github.com/Fahrin720/ProjectLinkUMS)
+
+### 02 / [KMLife — CodeNovaX1](https://github.com/Fahrin720/CodeNovaX1)
+
+A college-focused marketplace concept where students can find, post, and coordinate tasks and services within their community.
+
+**Areas:** Web applications · User flows · Community platforms  
+[Explore the repository](https://github.com/Fahrin720/CodeNovaX1)
+
+## 03 / Tools & technologies
+
+**Building with**  
+`JavaScript` · `TypeScript` · `Next.js` · `React` · `Supabase` · `PostgreSQL`
+
+**Learning and exploring**  
+`C / C++` · `Python` · `Linux` · `Cybersecurity` · `Git & GitHub`
+
+---
+
+<sub>Building, testing, learning, repeating. · <a href="https://github.com/Fahrin720?tab=repositories">Browse all repositories</a></sub>
